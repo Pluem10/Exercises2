@@ -1,4 +1,3 @@
-"use strict";
 class Customer {
     constructor(id, name, discount) {
         this.id = id;

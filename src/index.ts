@@ -1,16 +1,24 @@
-// import { Book } from "./Ex1";
+const { Customer, DiscountRate, Visit } = require("./Ex5");
 
-const {Author,Book} = require("./Ex1");
+// สร้างลูกค้าใหม่
+const customer = new Customer("Nabnoeyy", true, "premium");
+console.log(customer.toString());
 
-console.log("###### EX1 #######");
-const author1 = new Author("Nitiphon","664259010@webmail.npru.ac.th");
-console.log(author1.toStrin());
+// สร้างการเยี่ยมชมใหม่
+const visit = new Visit(customer, new Date(), 459, 325);
 
-const author2 = new Author("Nupnoey","664259009@webmail.npru.ac.th");
-console.log(author2.toString());
-const book1 = new Book("Basic Progeamming",[author1,author2],180,300)
-console.log(book1.toString());
-console.log(book1.getAuthorName());
+// คำนวณส่วนลด
+const serviceDiscount = DiscountRate.getServiceDiscountRate(customer.getMemberType()) * visit.getServiceExpense();
+const productDiscount = DiscountRate.getProductDiscountRate(customer.getMemberType()) * visit.getProductExpense();
 
+// คำนวณค่าใช้จ่ายหลังส่วนลด
+const discountedServiceExpense = visit.getServiceExpense() - serviceDiscount;
+const discountedProductExpense = visit.getProductExpense() - productDiscount;
+const totalExpenseAfterDiscount = discountedServiceExpense + discountedProductExpense;
 
-console.log("#################");
+// แสดงผลการคำนวณ
+console.log("Service Discount:", serviceDiscount.toFixed(2));
+console.log("Product Discount:", productDiscount.toFixed(2));
+console.log("Service Expense After Discount:", discountedServiceExpense.toFixed(2));
+console.log("Product Expense After Discount:", discountedProductExpense.toFixed(2));
+console.log("Total Expense After Discount:", totalExpenseAfterDiscount.toFixed(2));
