@@ -1,3 +1,9 @@
+// //  import { Author, Book } from "./Ex1";
+// // import { Customer, Invoice } from "./Ex2";
+// import {Person , Staff, Student} from "./Ex3";
+
+
+const { Shape, Circle, Rectangle, Square } = require("./Ex4")
 const { Customer, DiscountRate, Visit } = require("./Ex5");
 
 // สร้างลูกค้าใหม่
